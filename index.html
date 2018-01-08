@@ -3,48 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Chunky Monkeys</title>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+        .chart {
+            height: 80vh;
+            width: 80vw;
+        }
+    </style>
 </head>
 <body>
 
-<div style="width: 60%; height: 400px;">
-    <canvas id="chart" width="400" height="400"></canvas>
+<div class="chart">
+    <canvas id="chart"></canvas>
 </div>
 
 
 <script>
     var ctx = document.getElementById("chart");
 
-    raw = [93.5, 92.5, 92.0]
-    var mike = new Monkey("MD", "rgba(191, 110, 63, 0.8)", raw)
+    borderColours = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+    }
 
-    raw = [84.0, 84.4, 84.9]
-    var shaun = new Monkey("CB", "rgba(127, 191, 63, 0.8)", raw)
+    backgroundColours = {
+        red: 'rgba(255, 99, 132, 0.7)',
+        orange: 'rgba(255, 159, 64, 0.7)',
+        yellow: 'rgba(255, 205, 86, 0.7)',
+        green: 'rgba(75, 192, 192, 0.7)',
+        blue: 'rgba(54, 162, 235, 0.7)',
+        purple: 'rgba(153, 102, 255, 0.7)',
+        grey: 'rgba(201, 203, 207, 0.7)'
+    }
 
-    raw = [74.0, 73.1, 72.4]
-    var anna = new Monkey("AC", "rgba(63, 191, 191, 0.8)", raw)
+    raw = [93.5]
+    fudge = 0.002
+    var mike = new Monkey("MD", "orange", raw, fudge)
 
-    raw = [68, 64, 63.8]
-    var siobahn = new Monkey("SH", "rgba(63, 63, 191, 0.8)", raw)
+    raw = [84.0]
+    fudge = 0.001
+    var shaun = new Monkey("CB", "blue", raw, fudge)
+
+    raw = [73.9]
+    fudge = 0
+    var anna = new Monkey("AC", "green", raw, fudge)
+
+    raw = [76.4]
+    fudge = -0.001
+    var siobahn = new Monkey("SH", "yellow", raw, fudge)
+
+    raw = [61.5]
+    fudge = -0.002
+    var christie = new Monkey("CW", "purple", raw, fudge)
 
 
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["0", "1", "2", "3", "4", "5", "6"],
-            datasets: [siobahn, anna, mike, shaun]
+            labels: function() {
+                var weeks = [];
+                for (var w = 0; w <= 26; w++) {
+                    weeks.push(w)
+                }
+                return weeks
+            }(),
+            datasets: [anna, shaun, christie, mike, siobahn]
         },
         options: {
+            responsive: true,
             title: {
                 display: true,
                 text: 'Chunky Monkey Battle',
                 fontSize: 18
             },
             scales: {
+                xAxes :[{
+                    display: true,
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Week"
+                    }
+                }],
                 yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                      display: true,
+                      labelString: "ChubDex"
+                    },
                     ticks: {
                         beginAtZero: false
                     }
@@ -54,16 +111,18 @@
     });
 
 
-    function Monkey(label, colour, raw) {
+    function Monkey(label, colour, raw, fudge) {
 
         this.label = label
-        this.borderColor = colour
+        this.borderColor = borderColours[colour]
+        this.backgroundColor = backgroundColours[colour]
         this.borderWidth = 3
+        this.fill = false
         this.data = []
 
         // calculate data as percentages of first value
         for (var i = 0; i < raw.length; i++) {
-            this.data[i] = raw[i] / raw[0]
+            this.data[i] = raw[i] / raw[0] + fudge
         }
     }
 
