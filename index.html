@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chunky Monkeys</title>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+</head>
+<body>
+
+<div style="width: 60%; height: 400px;">
+    <canvas id="chart" width="400" height="400"></canvas>
+</div>
+
+
+<script>
+    var ctx = document.getElementById("chart");
+
+    raw = [93.5, 92.5, 92.0]
+    var mike = new Monkey("MD", "rgba(191, 110, 63, 0.8)", raw)
+
+    raw = [84.0, 84.4, 84.9]
+    var shaun = new Monkey("CB", "rgba(127, 191, 63, 0.8)", raw)
+
+    raw = [74.0, 73.1, 72.4]
+    var anna = new Monkey("AC", "rgba(63, 191, 191, 0.8)", raw)
+
+    raw = [68, 64, 63.8]
+    var siobahn = new Monkey("SH", "rgba(63, 63, 191, 0.8)", raw)
+
+
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["0", "1", "2", "3", "4", "5", "6"],
+            datasets: [siobahn, anna, mike, shaun]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Chunky Monkey Battle',
+                fontSize: 18
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            }
+        }
+    });
+
+
+    function Monkey(label, colour, raw) {
+
+        this.label = label
+        this.borderColor = colour
+        this.borderWidth = 3
+        this.data = []
+
+        // calculate data as percentages of first value
+        for (var i = 0; i < raw.length; i++) {
+            this.data[i] = raw[i] / raw[0]
+        }
+    }
+
+</script>
+
+</body>
+</html>
