@@ -67,6 +67,10 @@
     raw = [97.0, 96.0, 95]
     fudge = 0
     var mickm = new Monkey("MM", "green", raw, fudge)
+    
+    raw = [78.2, 76.9, 76.1]
+    fudge = 0
+    var annac = new Monkey("AC", "hotpink", raw, fudge)
 
 
     var chart = new Chart(ctx, {
@@ -79,7 +83,7 @@
                 }
                 return weeks
             }(),
-            datasets: [mickm, shaun, christie, mike, siobahn]
+            datasets: [mickm, shaun, christie, mike, siobahn, annac]
         },
         options: {
             responsive: true,
