@@ -48,27 +48,27 @@
         grey: 'rgba(201, 203, 207, 0.7)'
     }
 
-    raw = [93.5, 91.9, 92.1, 91.6, 91.6, 92.3, 91.6]
+    raw = [93.5, 91.9, 92.1, 91.6, 91.6, 92.3, 91.6, 91.6, 91.8]
     fudge = 0
     var mike = new Monkey("MD", "orange", raw, fudge)
 
-    raw = [85.0, 84.0, 85.0, 83.3, 82.8, 84.5, 83.0]
+    raw = [85.0, 84.0, 85.0, 83.3, 82.8, 84.5, 83.0, 83.4, 84.0]
     fudge = 0
     var shaun = new Monkey("CB", "blue", raw, fudge)
 
-    raw = [67.0, 67.0, 67.0, 67.0, 67.0, 67.0, 67.0]
-    fudge = 0
-    var siobahn = new Monkey("SH", "yellow", raw, fudge)
+//     raw = [67.0, 67.0, 67.0, 67.0, 67.0, 67.0, 67.0]
+//     fudge = 0
+//     var siobahn = new Monkey("SH", "yellow", raw, fudge)
 
-    raw = [64.0, 63.5, 63.5, 63.5, 63.5, 63.5, 63.5]
-    fudge = 0
-    var christie = new Monkey("CW", "purple", raw, fudge)
+//     raw = [64.0, 63.5, 63.5, 63.5, 63.5, 63.5, 63.5]
+//     fudge = 0
+//     var christie = new Monkey("CW", "purple", raw, fudge)
     
-    raw = [97, 96.0, 95, 94, 93, 94, 94]
+    raw = [97, 96.0, 95, 94, 93, 94, 94, 93, 91]
     fudge = 0
     var mickm = new Monkey("MM", "green", raw, fudge)
     
-    raw = [78.2, 76.9, 76.1, 76.1, 75.6, 76.4, 76.2]
+    raw = [78.2, 76.9, 76.1, 76.1, 75.6, 76.4, 76.2, 76.2, 80.3]
     fudge = 0
     var annac = new Monkey("AC", "red", raw, fudge)
 
@@ -83,7 +83,7 @@
                 }
                 return weeks
             }(),
-            datasets: [mickm, shaun, christie, mike, siobahn, annac]
+            datasets: [mickm, shaun, mike, annac]
         },
         options: {
             responsive: true,
