@@ -6,15 +6,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <style>
         body {
+            display: flow;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            width: 100vw;
+            /*height: 90vh;*/
+            /*width: 90vw;*/
         }
 
         .chart {
-            height: 80vh;
-            width: 80vw;
+            height: 40vh;
+            width: 40vw;
         }
     </style>
 </head>
@@ -53,19 +54,23 @@
         grey: 'rgba(201, 203, 207, 0.7)'
     }
 
-    let kg = [98.1]
+    let kg = [98.1, 96.9]
     const mikeMass = new massFraction("98DontBeLate", "orange", kg)
     const mikeBMI = new bmi("98DontBeLate", "orange", kg, 1.76)
 
 
-    kg = [88]
+    kg = [88.0, 87.4]
     const shaunMass = new massFraction("2PhatLadies", "blue", kg)
     const shaunBMI = new bmi("2PhatLadies", "blue", kg, 1.74)
 
 
-    kg = [101]
+    kg = [101, 100.5]
     const mickMass = new massFraction("Indulgence101", "green", kg)
     const mickBMI = new bmi("Indulgence101", "green", kg, 1.83)
+
+    kg = [81.1, 81.0]
+    const shevMass = new massFraction("PurpleHebby", "purple", kg)
+    const shevBMI = new bmi("PurpleHebby", "purple", kg, 1.77)
 
     const numWeeks = 20
 
@@ -79,7 +84,7 @@
                 }
                 return weeks
             }(),
-            datasets: [mickMass, shaunMass, mikeMass]
+            datasets: [shevMass, mickMass, shaunMass, mikeMass]
         },
         options: {
             responsive: true,
@@ -120,7 +125,7 @@
                 }
                 return weeks
             }(),
-            datasets: [mickBMI, shaunBMI, mikeBMI]
+            datasets: [shevBMI, mickBMI, shaunBMI, mikeBMI]
         },
         options: {
             responsive: true,
