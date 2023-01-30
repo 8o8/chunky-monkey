@@ -54,21 +54,25 @@
         grey: 'rgba(201, 203, 207, 0.7)'
     }
 
-    let kg = [98.1, 96.9]
+    let kg = [98.1, 96.9, 95.6]
     const mikeMass = new massFraction("98DontBeLate", "orange", kg)
     const mikeBMI = new bmi("98DontBeLate", "orange", kg, 1.76)
 
+    kg = [70.0, 70.0, 69.6]
+    const chrisMass = new massFraction("MonoKankle", "yellow", kg)
+    const chrisBMI = new bmi("MonoKankle", "yellow", kg, 1.64)
 
-    kg = [88.0, 87.4]
+
+    kg = [88.0, 87.4, 86.8]
     const shaunMass = new massFraction("2PhatLadies", "blue", kg)
     const shaunBMI = new bmi("2PhatLadies", "blue", kg, 1.74)
 
 
-    kg = [101, 100.5]
+    kg = [101, 100.5, 100.0]
     const mickMass = new massFraction("Indulgence101", "green", kg)
     const mickBMI = new bmi("Indulgence101", "green", kg, 1.83)
 
-    kg = [81.1, 81.0]
+    kg = [81.1, 81.0, 81.0]
     const shevMass = new massFraction("PurpleHebby", "purple", kg)
     const shevBMI = new bmi("PurpleHebby", "purple", kg, 1.77)
 
@@ -84,7 +88,7 @@
                 }
                 return weeks
             }(),
-            datasets: [shevMass, mickMass, shaunMass, mikeMass]
+            datasets: [shevMass, mickMass, shaunMass, mikeMass, chrisMass]
         },
         options: {
             responsive: true,
@@ -125,7 +129,7 @@
                 }
                 return weeks
             }(),
-            datasets: [shevBMI, mickBMI, shaunBMI, mikeBMI]
+            datasets: [shevBMI, mickBMI, shaunBMI, mikeBMI, chrisBMI]
         },
         options: {
             responsive: true,
